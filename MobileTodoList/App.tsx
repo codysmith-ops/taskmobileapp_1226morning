@@ -566,11 +566,13 @@ const App = (): React.JSX.Element => {
           {routePlan.length ? (
             <View style={styles.routeList}>
               {routePlan.map((task, idx) => (
+                // The key prop should be on the element, not passed to RouteStep
                 <RouteStep
-                  key={task.id}
                   index={idx}
                   task={task}
                   previous={idx === 0 ? currentPosition : routePlan[idx - 1]}
+                  // @ts-ignore
+                  key={task.id}
                 />
               ))}
             </View>
