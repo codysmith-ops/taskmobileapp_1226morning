@@ -5,12 +5,24 @@ vendor/
 # Environment
 .env
 .env.local
+.env.*.local
 
 # IDE
 .vscode/*
-!.vscode-chats/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.swp
+*.swo
+*~
+
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
 
 # Build
 build/
+dist/
 *.log
