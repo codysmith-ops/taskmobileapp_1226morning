@@ -1,6 +1,23 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# This is a wrapper script that runs from the parent repository
+# and executes the actual audit from MobileTodoList-iOS
+
+PARENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+IOS_PROJECT_DIR="${PARENT_DIR}/MobileTodoList-iOS"
+
+if [[ ! -d "$IOS_PROJECT_DIR" ]]; then
+    echo "ERROR: MobileTodoList-iOS directory not found at ${IOS_PROJECT_DIR}"
+    exit 1
+fi
+
+echo "Changing to iOS project directory: ${IOS_PROJECT_DIR}"
+cd "$IOS_PROJECT_DIR" || exit 1
+
+# Execute the actual audit script from the iOS project
+exec bash scripts/audit_before.sh
+
 ################################################################################
 # audit_before.sh - Triple-Pass Baseline iOS Audit (Enterprise Compliance)
 #
