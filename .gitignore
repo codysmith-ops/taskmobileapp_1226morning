@@ -26,3 +26,4 @@ vendor/
 build/
 dist/
 *.log
+MobileTodoList-iOS-Xcode16/
